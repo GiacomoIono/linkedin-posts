@@ -6,8 +6,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Output files
-last_linkedin_post.json
+
 
 # macOS system files
 .DS_Store
