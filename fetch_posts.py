@@ -19,8 +19,6 @@ headers = {
 
 # Calculate timestamp for 24 hours ago
 start_time = int((datetime.now() - timedelta(days=1)).timestamp() * 1000)
-
-# Parameters for the API request
 params = {
     'q': 'memberAndApplication',
     'count': 50,
@@ -47,7 +45,6 @@ def fetch_last_linkedin_post():
                     post_urn = element.get('resourceId', '')
                     timestamp = element.get('capturedAt', 0)
                     
-                    # Print each post's date for debugging
                     post_date = datetime.fromtimestamp(timestamp/1000)
                     print(f"Found post from: {post_date}")
                     
@@ -59,14 +56,45 @@ def fetch_last_linkedin_post():
                     })
             
             if posts:
-                # Sort posts by timestamp and get the most recent one
+                # Sort by timestamp descending, grab the most recent
                 posts.sort(key=lambda x: x['timestamp'], reverse=True)
                 latest_post = posts[0]
                 
-                # Remove the timestamp from the final output
+                # Remove 'timestamp' from final output
                 del latest_post['timestamp']
                 
-                # Save to JSON file
+                # -----------------------------------------------------------------
+                # 1. PARSE THE DATE FROM 'published_at'
+                # -----------------------------------------------------------------
+                published_at_str = latest_post["published_at"]
+                post_datetime = datetime.fromisoformat(published_at_str)  
+                # format to YYYY-MM-DD
+                post_date_str = post_datetime.strftime("%Y-%m-%d")
+                
+                # -----------------------------------------------------------------
+                # 2. FIND ALL MATCHING IMAGES IN /images FOLDER
+                # -----------------------------------------------------------------
+                images_dir = "images"  # Adjust if needed
+                image_list = []
+                
+                if os.path.isdir(images_dir):
+                    for filename in os.listdir(images_dir):
+                        # Check if filename starts with 'YYYY-MM-DD' AND ends with '.jpeg'
+                        if (filename.startswith(post_date_str) and 
+                            filename.lower().endswith(".jpeg")):
+                            image_list.append(filename)
+                
+                # Sort filenames for consistency, e.g. ["2025-02-13_1.jpeg", "2025-02-13_2.jpeg"]
+                image_list.sort()
+                
+                # -----------------------------------------------------------------
+                # 3. ADD THE ARRAY OF FILENAMES INTO THE JSON
+                # -----------------------------------------------------------------
+                latest_post["images"] = image_list
+                
+                # -----------------------------------------------------------------
+                # 4. SAVE TO JSON FILE
+                # -----------------------------------------------------------------
                 with open('last_linkedin_post.json', 'w', encoding='utf-8') as f:
                     json.dump(latest_post, f, ensure_ascii=False, indent=2)
                 
