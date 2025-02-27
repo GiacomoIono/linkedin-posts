@@ -3,9 +3,9 @@
   "url": "https://www.linkedin.com/feed/update/urn:li:share:7300523009994354688",
   "published_at": "2025-02-26T15:32:02.992000",
   "images": [
-    "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-02-26.jpeg",
-    "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-02-12_1.jpeg",
-    "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-02-13_1.jpeg",
-    "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-02-18_1.jpeg"
+    {"url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-02-26.jpeg"},
+    {"url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-02-12_1.jpeg"},
+    {"url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-02-13_1.jpeg"},
+    {"url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-02-18_1.jpeg"}
   ]
 }
