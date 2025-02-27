@@ -1,10 +1,8 @@
 {
-  "content": "Zapier automations are NOT AI agents.\n\nAnd yet, many people sell automations as \"AI agents.\" They’re not.\nHere’s the difference:\n\nWhat an AI agent actually is:\nA system that, given a problem (even a vague one), figures out the best way to solve it. It decides its own steps and executes them autonomously.\n\nHere's how an AI agent and a regular automation solve the same task:\n“Book the cheapest flight from Switzerland to London on May 7th.”\n\n\n👉 AI agent:\nIt searches the web, compares multiple flights dynamically, finds the best option, and (ideally) books it.\n\n👉 Zapier automation:\nA rigid, predefined workflow that follows explicit step-by-step instructions.\n\nSteps:\n1️⃣ Get ChatGPT to generate Python code to scrape Skyscanner.\n2️⃣ Run the code (fingers crossed it works).\n3️⃣ Scrape Zurich-Heathrow flights.\n4️⃣ Scrape Zurich-Stansted flights.\n5️⃣ Scrape Geneva flights…\n🔹 … Step 15: Get ChatGPT to determine the cheapest flight.\n🔹 … Step 16: Open Skyscanner and book it yourself.\n\n\nKey difference:\nAutomations follow preset instructions, you tell them exactly what to do. AI agents figure things out on their own.\n\nBoth can solve the problem. But agents are flexible, like a human.\n\nFor example, if you want to change the flight date with an AI agent, you simply update your initial prompt. The same as changing the dates on Skyscanner.\n\nWith Zapier, you need to edit the entire workflow.\n\n\nHave you tried some of these?",
-  "url": "https://www.linkedin.com/feed/update/urn:li:share:7297583457235357696",
-  "published_at": "2025-02-18T12:51:19.086000",
+  "content": "ChatGPT Deep Research is now available to all Plus users!\n\nTwo weeks after I got my Pro $200/month subscription 😭 \n\nDeep Research was by far the most attractive feature of GPT Pro.\nI used it a lot and saved countless hours already.\n\nSoon after its launch, it was copied by Perplexity and included in its $20/month subscription.\n\nThen it was copied by xAI Grok, while Google already had its own version in Gemini Advanced.\n\nGPT Plus gives 10 Deep Research queries per month, which is not a lot, but already enough for most users.\nGPT Pro gives 120 queries per month, more than you'll ever need I think.\n\nNow it'll be all about who provides the best Deep Research results!\n\nSo far, I have tried GPT Pro and Perplexity and the former still wins.\n\nBut we'll see!",
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7300523009994354688",
+  "published_at": "2025-02-26T15:32:02.992000",
   "images": [
-    "2025-02-18_1.jpeg",
-    "2025-02-18_2.jpeg",
-    "2025-02-12_1.jpeg"
+    "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-02-26.jpeg"
   ]
 }

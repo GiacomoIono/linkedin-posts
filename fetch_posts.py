@@ -27,13 +27,15 @@ params = {
 
 def fetch_last_linkedin_post():
     try:
-        response = requests.get(BASE_URL, headers=headers, params=params)
+        #API call
+        response = requests.get(BASE_URL, headers=headers, params=params) 
         print(f"API Response Status: {response.status_code}")
 
         if response.status_code == 200:
             data = response.json()
             posts = []
             
+            #query the json to find the data I need
             for element in data.get('elements', []):
                 if (element.get('resourceName') == 'ugcPosts' and 
                     element.get('method') == 'CREATE'):
@@ -86,14 +88,24 @@ def fetch_last_linkedin_post():
                 
                 # Sort filenames for consistency, e.g. ["2025-02-13_1.jpeg", "2025-02-13_2.jpeg"]
                 image_list.sort()
+
+
+                # -----------------------------------------------------------------
+                # 3. PREPEND THE GITHUB BASE URL TO THE IMAGE NAMES
+                # -----------------------------------------------------------------
+                base_url = "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/"
+                full_url_list = []
+                for fn in image_list:
+                    full_image_url = base_url + fn
+                    full_url_list.append(full_image_url)
                 
                 # -----------------------------------------------------------------
-                # 3. ADD THE ARRAY OF FILENAMES INTO THE JSON
+                # 4. ADD THE ARRAY OF FILENAMES INTO THE JSON
                 # -----------------------------------------------------------------
-                latest_post["images"] = image_list
+                latest_post["images"] = full_url_list
                 
                 # -----------------------------------------------------------------
-                # 4. SAVE TO JSON FILE
+                # 5. SAVE TO JSON FILE
                 # -----------------------------------------------------------------
                 with open('last_linkedin_post.json', 'w', encoding='utf-8') as f:
                     json.dump(latest_post, f, ensure_ascii=False, indent=2)
