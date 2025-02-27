@@ -91,13 +91,17 @@ def fetch_last_linkedin_post():
 
 
                 # -----------------------------------------------------------------
-                # 3. PREPEND THE GITHUB BASE URL TO THE IMAGE NAMES
+                # 3. PREPEND THE GITHUB BASE URL TO THE IMAGE NAMES + ADD ALT ATTRIBUTE
                 # -----------------------------------------------------------------
                 base_url = "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/"
                 full_url_list = []
                 for fn in image_list:
                     full_image_url = base_url + fn
-                    full_url_list.append(full_image_url)
+                    # Each item in the final list is now an object with 'url' and 'alt'
+                    full_url_list.append({
+                        "url": full_image_url,
+                        "alt": ""  # alt text left empty
+                    })
                 
                 # -----------------------------------------------------------------
                 # 4. ADD THE ARRAY OF FILENAMES INTO THE JSON
