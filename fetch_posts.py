@@ -43,6 +43,26 @@ def fetch_last_linkedin_post():
                     activity = element.get('activity', {})
                     content = (activity.get('specificContent', {})
                              .get('com.linkedin.ugc.ShareContent', {}))
+                    raw_text = content.get('shareCommentary', {}).get('text', '')
+
+                    # 1. Split into paragraphs on double newlines.
+                    paragraphs = raw_text.strip().split("\n\n")
+
+                    html_content_parts = []
+
+                    for paragraph in paragraphs:
+                        # 2. Replace single newlines within each paragraph with <br>.
+                        paragraph = paragraph.replace("\n", "<br>")
+    
+                        # 3. Wrap each paragraph in <p></p>.
+                        html_content_parts.append(f"<p>{paragraph}</p>")
+    
+                        # 4. Add an extra blank line (paragraph) after each paragraph.
+                        html_content_parts.append("<p>&nbsp;</p>")
+
+                        # 5. Combine everything into one string.
+                        html_content = "".join(html_content_parts)
+
                     
                     post_urn = element.get('resourceId', '')
                     timestamp = element.get('capturedAt', 0)
@@ -51,7 +71,7 @@ def fetch_last_linkedin_post():
                     print(f"Found post from: {post_date}")
                     
                     posts.append({
-                        'content': content.get('shareCommentary', {}).get('text', ''),
+                        'content': html_content,
                         'url': f"https://www.linkedin.com/feed/update/{post_urn}",
                         'published_at': datetime.fromtimestamp(timestamp/1000).isoformat(),
                         'timestamp': timestamp
