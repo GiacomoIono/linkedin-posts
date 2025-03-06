@@ -44,7 +44,7 @@ def fetch_last_linkedin_post():
                     content = (activity.get('specificContent', {})
                              .get('com.linkedin.ugc.ShareContent', {}))
                     
-                    post_urn = element.get('resourceId', '')
+                    post_urn = element.get('resourceId', '')a
                     timestamp = element.get('capturedAt', 0)
                     
                     post_date = datetime.fromtimestamp(timestamp/1000)
