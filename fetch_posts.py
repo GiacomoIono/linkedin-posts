@@ -59,7 +59,7 @@ def fetch_last_linkedin_post():
                         # Wrap each paragraph in <p>
                         html_content_parts.append(f"<p>{paragraph}</p>")
                         # Add extra empty paragraph for spacing
-                        html_content_parts.append("<p><br></p>")
+                        html_content_parts.append("<p>&nbsp;</p>")
 
                     # Combine everything into one string
                     html_content = "".join(html_content_parts)
