@@ -21,125 +21,117 @@ headers = {
 start_time = int((datetime.now() - timedelta(days=1)).timestamp() * 1000)
 params = {
     'q': 'memberAndApplication',
-    'count': 50,
+    'count': 50,  # you could reduce this, but 50 ensures you don’t miss the latest post
     'startTime': start_time
 }
 
 def fetch_last_linkedin_post():
     try:
-        #API call
+        # API call
         response = requests.get(BASE_URL, headers=headers, params=params) 
         print(f"API Response Status: {response.status_code}")
 
         if response.status_code == 200:
             data = response.json()
-            posts = []
-            
-            #query the json to find the data I need
+
+            latest_post = None  # will hold the most recent post
+            latest_timestamp = 0  # track the highest timestamp
+
+            # --------------------------
+            # 1. Loop through elements
+            # --------------------------
             for element in data.get('elements', []):
                 if (element.get('resourceName') == 'ugcPosts' and 
                     element.get('method') == 'CREATE'):
                     
+                    # Extract the post body
                     activity = element.get('activity', {})
                     content = (activity.get('specificContent', {})
-                             .get('com.linkedin.ugc.ShareContent', {}))
+                                       .get('com.linkedin.ugc.ShareContent', {}))
                     raw_text = content.get('shareCommentary', {}).get('text', '')
 
-                    # 1. Split into paragraphs on double newlines.
+                    # Transform plain text into HTML paragraphs
                     paragraphs = raw_text.strip().split("\n\n")
-
                     html_content_parts = []
-
                     for paragraph in paragraphs:
-                        # 2. Replace single newlines within each paragraph with <br>.
+                        # Replace single newlines with <br>
                         paragraph = paragraph.replace("\n", "<br>")
-    
-                        # 3. Wrap each paragraph in <p></p>.
+                        # Wrap each paragraph in <p>
                         html_content_parts.append(f"<p>{paragraph}</p>")
-    
-                        # 4. Add an extra blank line (paragraph) after each paragraph.
+                        # Add extra empty paragraph for spacing
                         html_content_parts.append("<p>&nbsp;</p>")
 
-                        # 5. Combine everything into one string.
-                        html_content = "".join(html_content_parts)
-
+                    # Combine everything into one string
+                    html_content = "".join(html_content_parts)
                     
-                    post_urn = element.get('resourceId', '')
+                    # Extract timestamp
                     timestamp = element.get('capturedAt', 0)
-                    
-                    post_date = datetime.fromtimestamp(timestamp/1000)
-                    print(f"Found post from: {post_date}")
-                    
-                    posts.append({
-                        'content': html_content,
-                        'url': f"https://www.linkedin.com/feed/update/{post_urn}",
-                        'published_at': datetime.fromtimestamp(timestamp/1000).isoformat(),
-                        'timestamp': timestamp
-                    })
-            
-            if posts:
-                # Sort by timestamp descending, grab the most recent
-                posts.sort(key=lambda x: x['timestamp'], reverse=True)
-                latest_post = posts[0]
-                
-                # Remove 'timestamp' from final output
-                del latest_post['timestamp']
-                
-                # -----------------------------------------------------------------
-                # 1. PARSE THE DATE FROM 'published_at'
-                # -----------------------------------------------------------------
+
+                    # If this post is newer than what we have so far, store it
+                    if timestamp > latest_timestamp:
+                        latest_timestamp = timestamp
+                        latest_post = {
+                            'content': html_content,
+                            'url': f"https://www.linkedin.com/feed/update/{element.get('resourceId', '')}",
+                            'published_at': datetime.fromtimestamp(timestamp / 1000).isoformat()
+                        }
+
+            # ---------------------------------------
+            # 2. If we found a post, process it
+            # ---------------------------------------
+            if latest_post:
+                # Convert the 'published_at' to datetime
                 published_at_str = latest_post["published_at"]
-                post_datetime = datetime.fromisoformat(published_at_str)  
-                # format to YYYY-MM-DD
+                post_datetime = datetime.fromisoformat(published_at_str)
+                # Format to YYYY-MM-DD
                 post_date_str = post_datetime.strftime("%Y-%m-%d")
-                
-                # -----------------------------------------------------------------
-                # 2. FIND ALL MATCHING IMAGES IN /images FOLDER
-                # -----------------------------------------------------------------
-                images_dir = "images"  # Adjust if needed
+
+                # ---------------------------------------
+                # 3. Find matching images in /images folder
+                # ---------------------------------------
+                images_dir = "images"
                 image_list = []
                 
                 if os.path.isdir(images_dir):
                     for filename in os.listdir(images_dir):
-                        # Check if filename starts with 'YYYY-MM-DD' AND ends with '.jpeg'
+                        # e.g. if filename is "2025-03-06.jpeg"
                         if (filename.startswith(post_date_str) and 
                             filename.lower().endswith(".jpeg")):
                             image_list.append(filename)
-                
-                # Sort filenames for consistency, e.g. ["2025-02-13_1.jpeg", "2025-02-13_2.jpeg"]
+
                 image_list.sort()
 
-
-                # -----------------------------------------------------------------
-                # 3. PREPEND THE GITHUB BASE URL TO THE IMAGE NAMES + ADD ALT ATTRIBUTE
-                # -----------------------------------------------------------------
+                # ---------------------------------------
+                # 4. Prepend base URL to each image
+                # ---------------------------------------
                 base_url = "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/"
                 full_url_list = []
                 for fn in image_list:
                     full_image_url = base_url + fn
-                    # Each item in the final list is now an object with 'url' and 'alt'
                     full_url_list.append({
                         "url": full_image_url,
-                        "alt": ""  # alt text left empty
+                        "alt": ""
                     })
-                
-                # -----------------------------------------------------------------
-                # 4. ADD THE ARRAY OF FILENAMES INTO THE JSON
-                # -----------------------------------------------------------------
+
+                # ---------------------------------------
+                # 5. Insert the array of images
+                # ---------------------------------------
                 latest_post["images"] = full_url_list
-                
-                # -----------------------------------------------------------------
-                # 5. SAVE TO JSON FILE
-                # -----------------------------------------------------------------
+
+
+                # ---------------------------------------
+                # 6. Save to JSON file
+                # ---------------------------------------
                 with open('last_linkedin_post.json', 'w', encoding='utf-8') as f:
                     json.dump(latest_post, f, ensure_ascii=False, indent=2)
-                
+
                 print("\nMost recent post has been saved to 'last_linkedin_post.json'")
                 print("\nPost data:")
                 print(json.dumps(latest_post, indent=2))
-                
+
                 return latest_post
-            
+
+            # If we didn’t find any posts
             print("No posts found")
             return None
 
