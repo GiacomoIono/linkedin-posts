@@ -1,26 +1,18 @@
 {
-  "content": "<p>\"This time is different.\"</p><p>&nbsp;</p><p>Yes, it actually is.</p><p>&nbsp;</p><p>Despite the recent dip, financial markets are at historic highs.<br>They are dominated by the technology sector, which brings some people to compare the current situation with the Dotcom bubble of 25 years ago.</p><p>&nbsp;</p><p>Maybe they're right, but...</p><p>&nbsp;</p><p>It's not the first time a single industry dominates the market and it doesn't always end in a bubble.</p><p>&nbsp;</p><p>In 1900 rail was the dominant industry, even more than technology today.<br>That was justified by the revolution of train transportation around the world.</p><p>&nbsp;</p><p>Just 15 years ago the technology sector represented the same share of global market capitalisation as the financial sector, around 6%.</p><p>&nbsp;</p><p>Now it's around 19%, a massive increase!</p><p>&nbsp;</p><p>But considering AI is just getting started, I'd say this is just the beginning!</p><p>&nbsp;</p><p>AI is indeed a revolution, and a very quick one. It's changing our daily lives as we speak.</p><p>&nbsp;</p><p>In fact, today's AI-driven tech leaders are fundamentally stronger than the darlings of the Dotcom era.</p><p>&nbsp;</p><p>For example, NVIDIA has today a net income margin of 49% vs 17% and 15% of Cisco and Oracle respectively in 1999.</p><p>&nbsp;</p><p>Five out of the magnificent seven have a net margin over 20%, which is generally considered very high. Plus, their net income growth rate is still amazing.</p><p>&nbsp;</p><p>Also, Dotcom companies' valuation was crazy high when compared to today's stocks.</p><p>&nbsp;</p><p>In March 2000, Cisco had a price/earning ratio of 196.2, vs \"just\" 36.6 of NVIDIA today.</p><p>&nbsp;</p><p><br>I believe we're just at the beginning of American tech dominance, thanks to AI.</p><p>&nbsp;</p><p><br>PS<br>The New York Times already called for a tech bubble in 2014!</p><p>&nbsp;</p>",
-  "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7305193705877954560",
-  "published_at": "2025-03-11T12:51:43.704000",
+  "content": "<p>AI use case of the day:</p><p>&nbsp;</p><p>Automating stock market research 📈</p><p>&nbsp;</p><p>Yesterday, I shared a post comparing the AI boom to the Dotcom bubble, backed by an Excel table of data.</p><p>&nbsp;</p><p>I didn’t manually populate that table. AI did it for me.</p><p>&nbsp;</p><p>I used ChatGPT to write a Python script that automatically pulled stock market data and formatted it into an Excel sheet.</p><p>&nbsp;</p><p>How I did it in 3 (extremely) simple steps:</p><p>&nbsp;</p><p>1️⃣ Prompt ChatGPT to write a Python script that retrieves the data I need.<br>2️⃣ Copy-paste the code into Google Colab (extremely easy tool).<br>3️⃣ Run the script and download the resulting CSV.</p><p>&nbsp;</p><p>Before AI, I would have taken ages (if ever) to learn Python and debug the script.</p><p>&nbsp;</p><p>Now it took me minutes.</p><p>&nbsp;</p><p>If this isn’t a complete revolution, I don’t know what is.</p><p>&nbsp;</p><p><br>Oh, and I used Perplexity to find old articles about tech bubbles. Also took me one minute.</p><p>&nbsp;</p>",
+  "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7305199429773389825",
+  "published_at": "2025-03-12T08:30:01.449000",
   "images": [
     {
-      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-11_1.jpeg",
+      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-12_1.jpeg",
       "alt": ""
     },
     {
-      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-11_2.jpeg",
+      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-12_2.jpeg",
       "alt": ""
     },
     {
-      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-11_3.jpeg",
-      "alt": ""
-    },
-    {
-      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-11_4.jpeg",
-      "alt": ""
-    },
-    {
-      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-11_5.jpeg",
+      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-12_3.jpeg",
       "alt": ""
     }
   ]
