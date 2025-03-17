@@ -1,19 +1,6 @@
 {
-  "content": "<p>AI use case of the day:</p><p>&nbsp;</p><p>Automating stock market research 📈</p><p>&nbsp;</p><p>Yesterday, I shared a post comparing the AI boom to the Dotcom bubble, backed by an Excel table of data.</p><p>&nbsp;</p><p>I didn’t manually populate that table. AI did it for me.</p><p>&nbsp;</p><p>I used ChatGPT to write a Python script that automatically pulled stock market data and formatted it into an Excel sheet.</p><p>&nbsp;</p><p>How I did it in 3 (extremely) simple steps:</p><p>&nbsp;</p><p>1️⃣ Prompt ChatGPT to write a Python script that retrieves the data I need.<br>2️⃣ Copy-paste the code into Google Colab (extremely easy tool).<br>3️⃣ Run the script and download the resulting CSV.</p><p>&nbsp;</p><p>Before AI, I would have taken ages (if ever) to learn Python and debug the script.</p><p>&nbsp;</p><p>Now it took me minutes.</p><p>&nbsp;</p><p>If this isn’t a complete revolution, I don’t know what is.</p><p>&nbsp;</p><p><br>Oh, and I used Perplexity to find old articles about tech bubbles. Also took me one minute.</p><p>&nbsp;</p>",
-  "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7305199429773389825",
-  "published_at": "2025-03-12T08:30:01.449000",
-  "images": [
-    {
-      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-12_1.jpeg",
-      "alt": ""
-    },
-    {
-      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-12_2.jpeg",
-      "alt": ""
-    },
-    {
-      "url": "https://raw.githubusercontent.com/GiacomoIono/linkedin-posts/refs/heads/main/images/2025-03-12_3.jpeg",
-      "alt": ""
-    }
-  ]
+  "content": "<p>I stopped my ChatGPT-Pro $200/month subscription.</p><p>&nbsp;</p><p>Here's why 👇 </p><p>&nbsp;</p><p>Just couple of weeks after I purchased my subscription, several pro-only features were added to the regular Plus plan ($20/month).</p><p>&nbsp;</p><p>I felt almost scammed!</p><p>&nbsp;</p><p>Sure, Pro still has way higher limits on many of these features, for example 120 Deep Research prompts per month vs only 10 in the Plus subscription, but still.</p><p>&nbsp;</p><p>Now ChatGPT-Plus ($20/month) has Deep Research, Sora and GPT-4.5, all previously available only on Pro.</p><p>&nbsp;</p><p>The o1-pro model is still missing, but honestly I didn't find it particular better than the regular o1.</p><p>&nbsp;</p><p>Operator is also missing, but it was still more of an experimental feature than something I could actually use.</p><p>&nbsp;</p><p>Also, o1-pro was added to the Enterprise subscription, which I'm lucky enough to subscribe to thanks to SMG Swiss Marketplace Group.</p><p>&nbsp;</p><p>Now, what's the case for GPT-Pro at 10x the price of Plus??</p><p>&nbsp;</p><p>I guess very small until the next big release.</p><p>&nbsp;</p>",
+  "url": "https://www.linkedin.com/feed/update/urn:li:share:7307337085877710848",
+  "published_at": "2025-03-17T12:00:10.540000",
+  "images": []
 }
